@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style/style.css">
+    <title>Inicio</title>
+</head>
+<body>
+    <h1 class="title">ONDAS ESTACIONARIAS</h1>
+    <canvas id="string"></canvas>
+    <button id="increase">Aumentar Frecuencia</button>
+    <button id="decrease">Disminuir Frecuencia</button>
+    <input type="number" id="frequencyInput" min="1" max="15" value="1">
+    <button id="setFrequency">Cambiar Frecuencia</button>
+    <div id="count">
+        <p>Frecuencia actual: <span id="frequencyDisplay">1</span></p>
+        <p id="message" style="color: red;"></p>
+    </div>
+    <script src="./scripts/wave.js"></script>
+</body>
+</html>
