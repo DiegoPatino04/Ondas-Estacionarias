@@ -6,7 +6,7 @@ let amplitude = 20;
 let frequency = 1;
 let time = 0;
 
-function animateWave() {
+function animateWave(selectedFrequency) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     ctx.beginPath();
@@ -17,7 +17,7 @@ function animateWave() {
 
     for (let i = 0; i < numPoints; i++) {
         const x = i * pointSpacing;
-        const displacement = amplitude * Math.sin(2 * Math.PI * frequency * x / canvas.width - time);
+        const displacement = amplitude * Math.sin(2 * Math.PI * selectedFrequency * x / canvas.width - time);
         const y = canvas.height / 2 + displacement;
 
         ctx.beginPath();
@@ -28,10 +28,15 @@ function animateWave() {
 
     time += 0.02;
     
-    requestAnimationFrame(animateWave);
+    requestAnimationFrame(() => animateWave(selectedFrequency));
 }
 
-animateWave();
+animateWave(frequency);
+
+document.getElementById("frequency-dropdown").addEventListener("change", function() {
+    const selectedFrequency = parseFloat(this.value);
+    animateWave(selectedFrequency);
+});
 
 const increaseFrequencyButton = document.getElementById("increase");
 const decreaseFrequencyButton = document.getElementById("decrease");
@@ -39,15 +44,6 @@ const decreaseFrequencyButton = document.getElementById("decrease");
 const frequencyDisplay = document.getElementById("frequencyDisplay");
 const messageElement = document.getElementById("message");
 
-increaseFrequencyButton.addEventListener("click", () => {
-    if (frequency < 15) {
-        frequency += 1;
-        frequencyDisplay.textContent = frequency;
-        messageElement.textContent = "";
-    } else {
-        messageElement.textContent = "La frecuencia no puede ser mayor a 15.";
-    }
-});
 
 decreaseFrequencyButton.addEventListener("click", () => {
     if (frequency > 1) {
