@@ -1,15 +1,14 @@
 const canvas = document.getElementById("string");
 const ctx = canvas.getContext("2d");
-const numPoints = 100; // Número de puntos en la onda
+const numPoints = 100;
 const pointSpacing = canvas.width / numPoints;
-let amplitude = 20; // Amplitud de la onda
-let frequency = 1; // Frecuencia de la onda
+let amplitude = 20;
+let frequency = 1;
 let time = 0;
 
 function animateWave() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    // Dibuja una línea horizontal en el centro del canvas
     ctx.beginPath();
     ctx.moveTo(0, canvas.height / 2);
     ctx.lineTo(canvas.width, canvas.height / 2);
@@ -43,8 +42,8 @@ const messageElement = document.getElementById("message");
 
 increaseFrequencyButton.addEventListener("click", () => {
     if (frequency < 15) {
-        frequency += 1; // Aumentar la frecuencia en 1 unidad
-        frequencyDisplay.textContent = frequency; // Actualiza el contador de frecuencia
+        frequency += 1;
+        frequencyDisplay.textContent = frequency;
         messageElement.textContent = "";
     } else {
         messageElement.textContent = "La frecuencia no puede ser mayor a 15.";
@@ -53,8 +52,8 @@ increaseFrequencyButton.addEventListener("click", () => {
 
 decreaseFrequencyButton.addEventListener("click", () => {
     if (frequency > 1) {
-        frequency -= 1; // Disminuir la frecuencia en 1 unidad
-        frequencyDisplay.textContent = frequency; // Actualiza el contador de frecuencia
+        frequency -= 1;
+        frequencyDisplay.textContent = frequency;
         messageElement.textContent = "";
     } else {
         messageElement.textContent = "La frecuencia no puede ser menor a 1.";
@@ -68,8 +67,8 @@ const setFrequencyButton = document.getElementById("setFrequency");
 setFrequencyButton.addEventListener("click", () => {
     const newFrequency = parseInt(frequencyInput.value);
     if (newFrequency >= 1 && newFrequency <= 15) {
-        frequency = newFrequency; // Establece la nueva frecuencia
-        frequencyDisplay.textContent = frequency; // Actualiza el contador de frecuencia
+        frequency = newFrequency;
+        frequencyDisplay.textContent = frequency;
         messageElement.textContent = "";
     } else {
         messageElement.textContent = "La frecuencia debe estar entre 1 y 15.";
