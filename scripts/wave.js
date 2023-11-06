@@ -1,6 +1,6 @@
 const canvas = document.getElementById("string");
 const ctx = canvas.getContext("2d");
-const numPoints = 100;
+const numPoints = 1000;
 const pointSpacing = canvas.width / numPoints;
 let amplitude = 20;
 let frequency = 1;
@@ -12,7 +12,7 @@ function animateWave() {
     ctx.beginPath();
     ctx.moveTo(0, canvas.height / 2);
     ctx.lineTo(canvas.width, canvas.height / 2);
-    ctx.strokeStyle = "#000";
+    ctx.strokeStyle = "gray";
     ctx.stroke();
 
     for (let i = 0; i < numPoints; i++) {
@@ -22,13 +22,12 @@ function animateWave() {
 
         ctx.beginPath();
         ctx.arc(x, y, 2, 0, 2 * Math.PI);
-        ctx.fillStyle = "#ff0000";
+        ctx.fillStyle = "red";
         ctx.fill();
     }
 
     time += 0.02;
-
-    // Mueve la onda hacia la derecha
+    
     requestAnimationFrame(animateWave);
 }
 
